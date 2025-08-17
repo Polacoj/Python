@@ -1,0 +1,23 @@
+import pandas as pd
+
+# Definir el archivo de origen y el archivo de destino
+archivo_origen = 'origen.xlsx'  # Cambia esto por el nombre de tu archivo de origen
+archivo_destino = 'destino.xlsx'  # Cambia esto por el nombre de tu archivo de destino
+
+# Leer el archivo Excel de origen
+df = pd.read_excel(archivo_origen)
+
+# Especificar las columnas que deseas extraer
+columnas_a_extraer = ['Columna1', 'Columna2']  # Cambia esto por los nombres de las columnas que necesitas
+
+# Extraer las columnas deseadas
+df_extraido = df[columnas_a_extraer]
+
+# Convertir a JSON
+json_data = df_extraido.to_json(orient='records')
+
+# Guardar el DataFrame extraído en un nuevo archivo Excel
+df_extraido.to_excel(archivo_destino, index=False)
+
+# Imprimir el JSON (opcional)
+print(json_data)
