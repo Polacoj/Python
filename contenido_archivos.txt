@@ -11,6 +11,34 @@ Jurisdicción policial: División Comisaría Vecinal  8A
 .Juzgado interventor: 45687508 
 Jefe de Servicio: Inspector ARGUELLO Leandro 
 Oficial de servicio: Of QUINTANA Gilda 
+Operador de camara: Cont INFANTE Jonathan 
+Breve reseña: Siendo las 01:55 horas, se visualiza mediante cámara Balvanera96, tres masculinos 
+sustrayendo los espejos de los vehiculos estacionados. Primer masculino campera azul, segundo 
+masculino campera negra con rojo, tercer masculino buzo o campera oscuro y bermu da gris. Es por 
+ello que se genera carta SAE Nro. 45687564 y se modula mediante frecuencia comuna 3, a fin de dar 
+con los mismos, logrando personal de facción dar con los sujetos aportados por esta sala. Es cuando 
+al momento de la identificación, el sujeto  de campera negra con rojo se da a la fuga por Ayacucho 
+sentido Tucuman perdiendolo de la visual de las cámaras. Personal interventor procede a efectuar 
+consulta con el Juzgado de Menores Nro. 7 A/C de la Dra. LAGE, Secretaría Nro, 19 A/C del Dr. 
+CARUSSO quien dispone labrar "Actuaciones por Tentativa de Robo" y detención.  
+RESULTADO: DOS (02) DETENIDOS 
+PRINCIPAL GUEVARA Gonzalo 
+División Centros de Monitoreo Urbano 
+
+
+----------/Users/alexisjankowicz/Python/pdf_a_excel/BALVANERA96 -DOS (02) DETENIDOS.pdf----------------
+División Centros de Monitoreo Urbano 
+Grupo Nro. 3 
+ 
+ 
+Comunicar Evento  
+Fecha: 22 de Julio de 2025                                     Hora  01:55 
+Lugar del hecho: Goleta Santa Cruz y Montiel  
+Causa:  TTVA ROBO 
+Jurisdicción policial: División Comisaría Vecinal  8A 
+.Juzgado interventor: 45687508 
+Jefe de Servicio: Inspector ARGUELLO Leandro 
+Oficial de servicio: Of QUINTANA Gilda 
 Operador de cámara: Cont INFANTE Jonathan 
 Breve reseña: Siendo las 01:55 horas, se visualiza mediante cámara Balvanera96, tres masculinos 
 sustrayendo los espejos de los vehiculos estacionados. Primer masculino campera azul, segundo 
@@ -66,7 +94,7 @@ Personal interventor: Policía de la Ciudad.
 Jefe de Servicio: Oficial Mayor MARTÍNEZ, Ricardo  
 Oficial de servicio:   Inspector NIEVA, Juan 
 Personal interventor en el lugar del hecho:   Inspector SIARES, Martin 
-Operador de Cámara: Pers, Contratado ORDEÑEZ, Débora. 
+Operador de Camara: Pers, Contratado ORDEÑEZ, Débora. 
  
 Breve reseña: Siendo las 06:16 horas ingresó carta SAE N.º 45688136, donde denunciante indicaba 
 que en la esquina de las calles Florida y Marcelo T De Alvear, habría tres masculinos empujando de 
@@ -85,78 +113,8 @@ DR.KIRSZENBAUM, Secretaria N° 132 a  cargo del DR . FERNANDO ROMERO, se labrari
 actuaciones por HURTO MOTOVEHICULAR, se procede a remitir el rodado a playa judicial y detención 
 de los 3 masculinos.  
 RESULTADO: TRES (03) DETENIDOS 
-----------/Users/alexisjankowicz/Python/pdf_a_excel/PARTE SUCESO 45688962.pdf----------------
-División Centros de Monitoreo Urbano 
- 
- 
-Comunicar Evento de División Centro de Monitoreo Urbano 
-Fecha: 22 de julio del 2025.- 
-Horario: 12:45 
-SAE: 45688962  
-Jurisdicción Policial: Comisaría Vecinal 4D 
-Juzgado Interventor Unidad de Flagrancia Sur a cargo del DR.DOLORES 
-Personal interventor: Policía de la Ciudad. 
-Jefe de Servicio: Oficial Mayor MARTÍNEZ, Ricardo  
-Oficial de servicio:   Oficial GUZMAN, Yesica 
-Personal interventor en el lugar del hecho:   Oficial Primero MENDOZA, Gonzalo 
-Operador de Cámara: Pers, Contratado BARONE, Candela. 
- 
-Breve reseña:  Siendo las 09:32 horas, se visualizó mediante la cámara Nueva Pompeya 04 a un 
-masculino en aparente venta de estupefacientes, se irradio alerta generando carta SAE N°456889 62 
-indicando las Descripciones, una vez arribado el personal policial logro dar con el masculino indicado , 
-una vez identificado y realizada la consulta con la Unidad de Flagrancia Sur a cargo del DR.DOLORES 
-QUIEN DISPUSO ACTUACIONES POR LEY 23737 , se secuestra envoltorio símil pasta base con un 
-peso de 2,81 gramos, envoltorios con sustancia simili marihuana con peso de 1.45 gramos y la suma 
-de 10 mil pesos argentinos. 
-RESULTADO: UN (01) DETENIDO 
-----------/Users/alexisjankowicz/Python/pdf_a_excel/PARTE_SUCESO_45705933.pdf----------------
-División Centros de Monitoreo Urbano 
- 
- 
-Comunicar Evento de División Centro de Monitoreo Urbano 
-Fecha: 24 de julio del 2025.- 
-Horario: 16:50 
-SAE: 45705933 
-Causa:  Infracción Ley 23737 
-Jurisdicción Policial: Comisaria Vecinal 1C 
-Juzgado Interventor: Unidad de Flagrancia Este a cargo del DR PEIX 
-Personal interventor: Policía de la Ciudad. 
-Jefe de Servicio: Of. Mayor MARTINEZ, Ricardo   
-Oficial de servicio:   Of Mayor MEZA, Gastón 
-Personal interventor en el lugar del hecho:    
-Operador de Cámara: Pers. Contratado TURA, Belén 
-Breve reseña: Siendo las 15:2 9 horas, s e modulo y genero carta SAE  por femenina y masculino 
-realizando pasamanos entre ellos de diner o por envoltorio con lo que sería estupefacientes, personal 
-da con las partes, requisa de la femenina positiva sobre envoltorios , una vez identificados y realizada 
-la consulta con la U nidad de Flagrancia Este a cargo del DR PEIX, avalo actuaciones caratulado 
-Infracción Ley 23737 Artículo 5 Inciso C para la femenino y detención de la misma. Solicita declaración 
-y registros fílmicos de CMU. 
-RESULTADO: UN (01) DETENIDO 
-----------/Users/alexisjankowicz/Python/pdf_a_excel/PARTE_SUCESO_45705157.pdf----------------
-División Centros de Monitoreo Urbano 
- 
- 
-Comunicar Evento de División Centro de Monitoreo Urbano 
-Fecha: 24 de julio del 2025.- 
-Horario: 17:00 
-SAE: 45705157 
-Causa:  ROBO 
-Jurisdicción Policial: Comisaria Vecinal 7B 
-Juzgado Interventor: Juzgado Criminal N°43 a cargo del DR. VERONICA, Secretaria N°109 a cargo 
-del DR. MIRTUÑO 
-Personal interventor: Policía de la Ciudad. 
-Jefe de Servicio: Of. Mayor MARTINEZ, Ricardo   
-Oficial de servicio:   Of CABRERA, Daniela 
-Personal interventor en el lugar del hecho:   Oficial MENDOZA, Miguel 
-Operador de Cámara: Pers. Contratado VELTRI, Paula 
-Breve reseña: Siendo las 13:43 horas, se toma conoci miento mediante constancia que Personal 
-Policial solicita Móvil para traslado de detenidos. CMU verifica línea de tiempo por cámara Parque 
-Chacabuco 30Cam02 13:29 horas, se observa un masculino de ropas oscuras a la veloz carrera salir 
-del interior del colectivo que se encontraba detenido sobre Zelarrayan donde posteriormente es 
-reducido por Personal Policial. Una vez identificado y realizada la consulta con el Juzgado Criminal 
-N°43 a cargo del DR. VERONICA, Secretaria N°109 a cargo del DR. MIRTUÑO labran actuaciones por 
-robo. 
-RESULTADO: UN (01) DETENIDO 
+
+
 ----------/Users/alexisjankowicz/Python/pdf_a_excel/CONSTITUCIÓN74 - DOS (02) DETENIDOS.pdf----------------
 División Centros de Monitoreo Urbano 
 Grupo Nro. 1 
@@ -180,239 +138,6 @@ caratula Infracción Ley 23737 Artículo 5 inciso C para las femeninas, detenci�
 solicita declaración y registros fílmicos 
 RESULTADO: DOS (02) DETENIDOS 
 PRINCIPAL LANGHI Karina 
-División Centros de Monitoreo Urbano 
-
-
-----------/Users/alexisjankowicz/Python/pdf_a_excel/pdfs/PARTE_SUCESO_45705933.pdf----------------
-División Centros de Monitoreo Urbano 
- 
- 
-Comunicar Evento de División Centro de Monitoreo Urbano 
-Fecha: 24 de julio del 2025.- 
-Horario: 16:50 
-SAE: 45705933 
-Causa:  Infracción Ley 23737 
-Jurisdicción Policial: Comisaria Vecinal 1C 
-Juzgado Interventor: Unidad de Flagrancia Este a cargo del DR PEIX 
-Personal interventor: Policía de la Ciudad. 
-Jefe de Servicio: Of. Mayor MARTINEZ, Ricardo   
-Oficial de servicio:   Of Mayor MEZA, Gastón 
-Personal interventor en el lugar del hecho:    
-Operador de Cámara: Pers. Contratado TURA, Belén 
-Breve reseña: Siendo las 15:2 9 horas, s e modulo y genero carta SAE  por femenina y masculino 
-realizando pasamanos entre ellos de diner o por envoltorio con lo que sería estupefacientes, personal 
-da con las partes, requisa de la femenina positiva sobre envoltorios , una vez identificados y realizada 
-la consulta con la U nidad de Flagrancia Este a cargo del DR PEIX, avalo actuaciones caratulado 
-Infracción Ley 23737 Artículo 5 Inciso C para la femenino y detención de la misma. Solicita declaración 
-y registros fílmicos de CMU. 
-RESULTADO: UN (01) DETENIDO 
-
-
-----------/Users/alexisjankowicz/Documents/BoardingPass.pdf----------------
-039
-13FEB
-02:35h
-AEP
-STPP,PDBG
-IAASCZ
-FLN
-2
-JANKOWICZ/ALEXIS LEONEL
-13FEB
-AEROPARQUE
-FO  5950
-00:40h
-11D
-FLORIANOPOLIS
-4790211313993
-23:40h
-
-
-
-----------/Users/alexisjankowicz/Python/pdf_a_excel/BALVANERA96 -DOS (02) DETENIDOS.pdf----------------
-División Centros de Monitoreo Urbano 
-Grupo Nro. 3 
- 
- 
-Comunicar Evento  
-Fecha: 22 de Julio de 2025                                     Hora  01:55 
-Lugar del hecho: Goleta Santa Cruz y Montiel  
-Causa:  TTVA ROBO 
-Jurisdicción policial: División Comisaría Vecinal  8A 
-.Juzgado interventor: 45687508 
-Jefe de Servicio: Inspector ARGUELLO Leandro 
-Oficial de servicio: Of QUINTANA Gilda 
-Operador de cámara: Cont INFANTE Jonathan 
-Breve reseña: Siendo las 01:55 horas, se visualiza mediante cámara Balvanera96, tres masculinos 
-sustrayendo los espejos de los vehiculos estacionados. Primer masculino campera azul, segundo 
-masculino campera negra con rojo, tercer masculino buzo o campera oscuro y bermu da gris. Es por 
-ello que se genera carta SAE Nro. 45687564 y se modula mediante frecuencia comuna 3, a fin de dar 
-con los mismos, logrando personal de facción dar con los sujetos aportados por esta sala. Es cuando 
-al momento de la identificación, el sujeto  de campera negra con rojo se da a la fuga por Ayacucho 
-sentido Tucuman perdiendolo de la visual de las cámaras. Personal interventor procede a efectuar 
-consulta con el Juzgado de Menores Nro. 7 A/C de la Dra. LAGE, Secretaría Nro, 19 A/C del Dr. 
-CARUSSO quien dispone labrar "Actuaciones por Tentativa de Robo" y detención.  
-RESULTADO: DOS (02) DETENIDOS 
-PRINCIPAL GUEVARA Gonzalo 
-División Centros de Monitoreo Urbano 
-
-
-----------/Users/alexisjankowicz/Python/pdf_a_excel/pdfs/PARTE_SUCESO_45705933.pdf----------------
-División Centros de Monitoreo Urbano 
- 
- 
-Comunicar Evento de División Centro de Monitoreo Urbano 
-Fecha: 24 de julio del 2025.- 
-Horario: 16:50 
-SAE: 45705933 
-Causa:  Infracción Ley 23737 
-Jurisdicción Policial: Comisaria Vecinal 1C 
-Juzgado Interventor: Unidad de Flagrancia Este a cargo del DR PEIX 
-Personal interventor: Policía de la Ciudad. 
-Jefe de Servicio: Of. Mayor MARTINEZ, Ricardo   
-Oficial de servicio:   Of Mayor MEZA, Gastón 
-Personal interventor en el lugar del hecho:    
-Operador de Cámara: Pers. Contratado TURA, Belén 
-Breve reseña: Siendo las 15:2 9 horas, s e modulo y genero carta SAE  por femenina y masculino 
-realizando pasamanos entre ellos de diner o por envoltorio con lo que sería estupefacientes, personal 
-da con las partes, requisa de la femenina positiva sobre envoltorios , una vez identificados y realizada 
-la consulta con la U nidad de Flagrancia Este a cargo del DR PEIX, avalo actuaciones caratulado 
-Infracción Ley 23737 Artículo 5 Inciso C para la femenino y detención de la misma. Solicita declaración 
-y registros fílmicos de CMU. 
-RESULTADO: UN (01) DETENIDO 
-
-
-----------/Users/alexisjankowicz/Python/pdf_a_excel/pdfs/PARTE SUCESO 45688962.pdf----------------
-División Centros de Monitoreo Urbano 
- 
- 
-Comunicar Evento de División Centro de Monitoreo Urbano 
-Fecha: 22 de julio del 2025.- 
-Horario: 12:45 
-SAE: 45688962  
-Jurisdicción Policial: Comisaría Vecinal 4D 
-Juzgado Interventor Unidad de Flagrancia Sur a cargo del DR.DOLORES 
-Personal interventor: Policía de la Ciudad. 
-Jefe de Servicio: Oficial Mayor MARTÍNEZ, Ricardo  
-Oficial de servicio:   Oficial GUZMAN, Yesica 
-Personal interventor en el lugar del hecho:   Oficial Primero MENDOZA, Gonzalo 
-Operador de Cámara: Pers, Contratado BARONE, Candela. 
- 
-Breve reseña:  Siendo las 09:32 horas, se visualizó mediante la cámara Nueva Pompeya 04 a un 
-masculino en aparente venta de estupefacientes, se irradio alerta generando carta SAE N°456889 62 
-indicando las Descripciones, una vez arribado el personal policial logro dar con el masculino indicado , 
-una vez identificado y realizada la consulta con la Unidad de Flagrancia Sur a cargo del DR.DOLORES 
-QUIEN DISPUSO ACTUACIONES POR LEY 23737 , se secuestra envoltorio símil pasta base con un 
-peso de 2,81 gramos, envoltorios con sustancia simili marihuana con peso de 1.45 gramos y la suma 
-de 10 mil pesos argentinos. 
-RESULTADO: UN (01) DETENIDO 
-
-
-----------/Users/alexisjankowicz/Python/pdf_a_excel/BALVANERA96 -DOS (02) DETENIDOS.pdf----------------
-División Centros de Monitoreo Urbano 
-Grupo Nro. 3 
- 
- 
-Comunicar Evento  
-Fecha: 22 de Julio de 2025                                     Hora  01:55 
-Lugar del hecho: Goleta Santa Cruz y Montiel  
-Causa:  TTVA ROBO 
-Jurisdicción policial: División Comisaría Vecinal  8A 
-.Juzgado interventor: 45687508 
-Jefe de Servicio: Inspector ARGUELLO Leandro 
-Oficial de servicio: Of QUINTANA Gilda 
-Operador de cámara: Cont INFANTE Jonathan 
-Breve reseña: Siendo las 01:55 horas, se visualiza mediante cámara Balvanera96, tres masculinos 
-sustrayendo los espejos de los vehiculos estacionados. Primer masculino campera azul, segundo 
-masculino campera negra con rojo, tercer masculino buzo o campera oscuro y bermu da gris. Es por 
-ello que se genera carta SAE Nro. 45687564 y se modula mediante frecuencia comuna 3, a fin de dar 
-con los mismos, logrando personal de facción dar con los sujetos aportados por esta sala. Es cuando 
-al momento de la identificación, el sujeto  de campera negra con rojo se da a la fuga por Ayacucho 
-sentido Tucuman perdiendolo de la visual de las cámaras. Personal interventor procede a efectuar 
-consulta con el Juzgado de Menores Nro. 7 A/C de la Dra. LAGE, Secretaría Nro, 19 A/C del Dr. 
-CARUSSO quien dispone labrar "Actuaciones por Tentativa de Robo" y detención.  
-RESULTADO: DOS (02) DETENIDOS 
-PRINCIPAL GUEVARA Gonzalo 
-División Centros de Monitoreo Urbano 
-----------/Users/alexisjankowicz/Python/pdf_a_excel/RETIRO55 - UN (01) DETENIDO.pdf----------------
-División Centros de Monitoreo Urbano 
-Grupo Nro. 3 
- 
- 
-Comunicar Evento  
-Fecha: 22 de Julio de 2025                                     Hora  01:53 
-Lugar del hecho: Arenales 1294 
-Causa:  TTVA ROBO 
-Jurisdicción policial: División Comisaría Vecinal  1A 
-.Juzgado interventor: 45687558 
-Jefe de Servicio: Inspector ARGUELLO Leandro 
-Oficial de servicio: Of Primero VILLALBA Nicolas 
-Operador de cámara: Cont BENITEZ PEREIRA Patricia 
-Breve reseña : Siendo las 01:53 horas, se visualiza mediante cámara Retiro55 dos masculinos 
-violentando con una piedra una ciometa color oscuro. Primer masculino gorra negra pantalón negro, 
-buzo negro, segundo masculino buzo negro, pantalón de jean oscuro, zapatilals negras. Los mismso 
-sutraen prendas del interior. Se retiran del lugar uno de ellos por Santa Fe hacia 9 de Julio, el otro por 
-Uruguay hacia Juncal. Es por ello que se genera carta SAE  Nro. 45687558 y se modula mediante 
-frecuencia comuna 1, ampliando sentido de fuga, logrado personal de facción dar con uno de los sujetos 
-aportados por esta sala. Personal interventor procee a efectuar consulta con el Juzgado Nacional en lo 
-Criminal y Correccional Nro. 38 A/C del Dr. KIRSZENBAUM Secretaría Nro. 132 A/C del Dr. ROMERO 
-quien dispone labrar "Actuaciones por Tentativa de Robo" y detención.  
-RESULTADO: DOS (02) DETENIDOS 
-PRINCIPAL GUEVARA Gonzalo 
-División Centros de Monitoreo Urbano 
-
-
-----------/Users/alexisjankowicz/Python/pdf_a_excel/BALVANERA96 -DOS (02) DETENIDOS.pdf----------------
-División Centros de Monitoreo Urbano 
-Grupo Nro. 3 
- 
- 
-Comunicar Evento  
-Fecha: 22 de Julio de 2025                                     Hora  01:55 
-Lugar del hecho: Goleta Santa Cruz y Montiel  
-Causa:  TTVA ROBO 
-Jurisdicción policial: División Comisaría Vecinal  8A 
-.Juzgado interventor: 45687508 
-Jefe de Servicio: Inspector ARGUELLO Leandro 
-Oficial de servicio: Of QUINTANA Gilda 
-Operador de cámara: Cont INFANTE Jonathan 
-Breve reseña: Siendo las 01:55 horas, se visualiza mediante cámara Balvanera96, tres masculinos 
-sustrayendo los espejos de los vehiculos estacionados. Primer masculino campera azul, segundo 
-masculino campera negra con rojo, tercer masculino buzo o campera oscuro y bermu da gris. Es por 
-ello que se genera carta SAE Nro. 45687564 y se modula mediante frecuencia comuna 3, a fin de dar 
-con los mismos, logrando personal de facción dar con los sujetos aportados por esta sala. Es cuando 
-al momento de la identificación, el sujeto  de campera negra con rojo se da a la fuga por Ayacucho 
-sentido Tucuman perdiendolo de la visual de las cámaras. Personal interventor procede a efectuar 
-consulta con el Juzgado de Menores Nro. 7 A/C de la Dra. LAGE, Secretaría Nro, 19 A/C del Dr. 
-CARUSSO quien dispone labrar "Actuaciones por Tentativa de Robo" y detención.  
-RESULTADO: DOS (02) DETENIDOS 
-PRINCIPAL GUEVARA Gonzalo 
-División Centros de Monitoreo Urbano 
-----------/Users/alexisjankowicz/Python/pdf_a_excel/RETIRO55 - UN (01) DETENIDO.pdf----------------
-División Centros de Monitoreo Urbano 
-Grupo Nro. 3 
- 
- 
-Comunicar Evento  
-Fecha: 22 de Julio de 2025                                     Hora  01:53 
-Lugar del hecho: Arenales 1294 
-Causa:  TTVA ROBO 
-Jurisdicción policial: División Comisaría Vecinal  1A 
-.Juzgado interventor: 45687558 
-Jefe de Servicio: Inspector ARGUELLO Leandro 
-Oficial de servicio: Of Primero VILLALBA Nicolas 
-Operador de cámara: Cont BENITEZ PEREIRA Patricia 
-Breve reseña : Siendo las 01:53 horas, se visualiza mediante cámara Retiro55 dos masculinos 
-violentando con una piedra una ciometa color oscuro. Primer masculino gorra negra pantalón negro, 
-buzo negro, segundo masculino buzo negro, pantalón de jean oscuro, zapatilals negras. Los mismso 
-sutraen prendas del interior. Se retiran del lugar uno de ellos por Santa Fe hacia 9 de Julio, el otro por 
-Uruguay hacia Juncal. Es por ello que se genera carta SAE  Nro. 45687558 y se modula mediante 
-frecuencia comuna 1, ampliando sentido de fuga, logrado personal de facción dar con uno de los sujetos 
-aportados por esta sala. Personal interventor procee a efectuar consulta con el Juzgado Nacional en lo 
-Criminal y Correccional Nro. 38 A/C del Dr. KIRSZENBAUM Secretaría Nro. 132 A/C del Dr. ROMERO 
-quien dispone labrar "Actuaciones por Tentativa de Robo" y detención.  
-RESULTADO: DOS (02) DETENIDOS 
-PRINCIPAL GUEVARA Gonzalo 
 División Centros de Monitoreo Urbano 
 
 

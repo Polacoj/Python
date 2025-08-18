@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinterdnd2 import DND_FILES, TkinterDnD
 from pypdf import PdfReader
 import re
+import pandas as pd
 
 # Variables globales para almacenar rutas y contenido
 rutas_global = []
@@ -48,6 +49,41 @@ def aceptar():
         print("Contenido guardado en contenido_archivos.txt")
 
 
+def extraer_a_excel():
+    datos = []
+    with open("contenido_archivos.txt", "r", encoding="utf-8") as f:
+        contenido = f.read()
+
+    bloques = re.split(r'-{10,}(.+?)-{10,}\n', contenido)
+    for i in range(1, len(bloques), 2):
+        ruta = bloques[i].strip()
+        texto = bloques[i+1].strip() if i+1 < len(bloques) else ""
+
+        fecha = re.search(r'Fecha:\s*(.*?2025)', texto, re.IGNORECASE)
+        # Modificado para aceptar "Hora" o "Horario"
+        hora = re.search(r'(Hora|Horario)[:\- ]+([^\n]+)', texto)
+        causa = re.search(r'Causa:\s*([^\n]+)', texto, re.IGNORECASE)
+        jefe = re.search(r'Jefe de Servicio:\s*([^\n]+)', texto, re.IGNORECASE)
+        oficial = re.search(r'Oficial de Servicio:\s*([^\n]+)', texto, re.IGNORECASE)
+        operador = re.search(r'Operador de C[aá]mara:\s*([^\n]+)', texto, re.IGNORECASE)
+        resultado = re.search(r'Resultado:\s*([^\n]+)', texto, re.IGNORECASE)
+
+        datos.append({
+            "titulo": ruta,
+            "fecha": fecha.group(1).strip() if fecha else "S/D",
+            "hora": hora.group(2).strip() if hora else "S/D",
+            "causa": causa.group(1).strip() if causa else "S/D",
+            "jefe de servicio": jefe.group(1).strip() if jefe else "S/D",
+            "oficial de servicio": oficial.group(1).strip() if oficial else "S/D",
+            "operador de camara": operador.group(1).strip() if operador else "S/D",
+            "resultado": resultado.group(1).strip() if resultado else "S/D"
+        })
+
+    df = pd.DataFrame(datos)
+    df.to_excel("contenido_archivos.xlsx", index=False)
+    print("Datos extraídos y guardados en contenido_archivos.xlsx")
+
+
 # Initialize the TkinterDnD window
 root = TkinterDnD.Tk()
 root.title("Ventana para el archivo")
@@ -72,9 +108,11 @@ ventana_pegado.pack(fill=tk.BOTH, expand=True)
 boton_aceptar = tk.Button(frame, text="Aceptar", command=aceptar)
 boton_aceptar.pack(side=tk.LEFT)
 
-boton_cerrar = tk.Button(frame, text="Cerrar",
-                         command=exit)
+boton_cerrar = tk.Button(frame, text="Cerrar", command=exit)
 boton_cerrar.pack(side=tk.RIGHT)
+
+boton_ejecutar = tk.Button(frame, text="ejecutar", command=extraer_a_excel)
+boton_ejecutar.pack(side=tk.BOTTOM)
 
 # Register the label as a drop target
 ventana_pegado.drop_target_register(DND_FILES)
