@@ -64,7 +64,7 @@ def extraer_a_excel():
         hora = re.search(r'(Hora|Horario)[:\- ]+([^\n]+)', texto)
         causa = re.search(r'Causa:\s*([^\n]+)', texto, re.IGNORECASE)
         jefe = re.search(r'Jefe de Servicio:\s*([^\n]+)', texto, re.IGNORECASE)
-        oficial = re.search(r'Oficial de Servicio:\s*([^\n]+)', texto, re.IGNORECASE)
+        oficial = re.search(r'Oficial de Serv[ií]cio:\s*([^\n]+)', texto, re.IGNORECASE)
         operador = re.search(r'Operador de C[aá]mara:\s*([^\n]+)', texto, re.IGNORECASE)
         resultado = re.search(r'Resultado:\s*([^\n]+)', texto, re.IGNORECASE)
 
@@ -111,7 +111,7 @@ boton_aceptar.pack(side=tk.LEFT)
 boton_cerrar = tk.Button(frame, text="Cerrar", command=exit)
 boton_cerrar.pack(side=tk.RIGHT)
 
-boton_ejecutar = tk.Button(frame, text="ejecutar", command=extraer_a_excel)
+boton_ejecutar = tk.Button(frame, text="Ejecutar", command=extraer_a_excel)
 boton_ejecutar.pack(side=tk.BOTTOM)
 
 # Register the label as a drop target
