@@ -3,6 +3,7 @@ from tkinterdnd2 import DND_FILES, TkinterDnD
 from pypdf import PdfReader
 import re
 import pandas as pd
+from docx import Document
 
 # Variables globales para almacenar rutas y contenido
 rutas_global = []
@@ -39,8 +40,8 @@ def pegar(evento):
 def aceptar():
     global rutas_global, contenido_global
     # Cambia el texto del label para indicar aceptación
-    ventana_pegado.config(text="Archivos aceptados")
-    print("Archivos aceptados")
+    ventana_pegado.config(text="Archivos cargados")
+    print("Archivos cargados")
     # Guarda el contenido en un archivo .txt
     if contenido_global:
         with open("contenido_archivos.txt", "a", encoding="utf-8") as f:
@@ -49,8 +50,8 @@ def aceptar():
         print("Contenido guardado en contenido_archivos.txt")
 
 
-def extraer_a_excel():
-    datos = []
+def extraer_convertir():
+    datos, datos_2 = [], []
     with open("contenido_archivos.txt", "r", encoding="utf-8") as f:
         contenido = f.read()
 
@@ -60,12 +61,17 @@ def extraer_a_excel():
         texto = bloques[i+1].strip() if i+1 < len(bloques) else ""
 
         fecha = re.search(r'Fecha:\s*(.*?2025)', texto, re.IGNORECASE)
-        # Modificado para aceptar "Hora" o "Horario"
         hora = re.search(r'(Hora|Horario)[:\- ]+([^\n]+)', texto)
         causa = re.search(r'Causa:\s*([^\n]+)', texto, re.IGNORECASE)
         jefe = re.search(r'Jefe de Servicio:\s*([^\n]+)', texto, re.IGNORECASE)
-        oficial = re.search(r'Oficial de Serv[ií]cio:\s*([^\n]+)', texto, re.IGNORECASE)
-        operador = re.search(r'Operador de C[aá]mara:\s*([^\n]+)', texto, re.IGNORECASE)
+        oficial = re.search(
+            r'Oficial de Serv[ií]cio:\s*([^\n]+)', texto, re.IGNORECASE)
+        operador = re.search(
+            r'Operador de C[aá]mara:\s*([^\n]+)', texto, re.IGNORECASE)
+        resena_bloque = re.search(
+            r'(breve\s+rese[ñn]a\s*:|breve\s+resena\s*:|Breve\s+rese[ñn]a\s*:|Breve\s+resena\s*:)(.*?)(?:\n\s*Resultado\s*:)',
+            texto, re.IGNORECASE | re.DOTALL
+        )
         resultado = re.search(r'Resultado:\s*([^\n]+)', texto, re.IGNORECASE)
 
         datos.append({
@@ -79,10 +85,35 @@ def extraer_a_excel():
             "resultado": resultado.group(1).strip() if resultado else "S/D"
         })
 
+        # Extraer el bloque de reseña hasta "resultado" y quitar saltos de línea
+        resena_bloque = re.search(
+            r'(breve\s+rese[ñn]a\s*:|breve\s+resena\s*:|Breve\s+rese[ñn]a\s*:|Breve\s+resena\s*:)(.*?)(?:\n\s*Resultado\s*:)',
+            texto, re.IGNORECASE | re.DOTALL
+        )
+        if resena_bloque:
+            reseña_limpia = re.sub(r'\s+', ' ', resena_bloque.group(2)).strip()
+        else:
+            reseña_limpia = "S/D"
+
+        celda_combinada = (
+            f"Fecha: {fecha.group(1).strip() if fecha else 'S/D'}\n"
+            f"Reseña: {reseña_limpia}\n"
+            f"Resultado: {resultado.group(1).strip() if resultado else 'S/D'}"
+        )
+
+        datos_2.append(celda_combinada)
+
     df = pd.DataFrame(datos)
     df.to_excel("contenido_archivos.xlsx", index=False)
-    print("Datos extraídos y guardados en contenido_archivos.xlsx")
 
+    # Guardar datos_2 en un archivo Word
+    doc = Document()
+    doc.add_heading('Reseñas extraídas', 0)
+    for item in datos_2:
+        doc.add_paragraph(item)
+        doc.add_paragraph('---')
+    doc.save("reseña_archivos.docx")
+    print("Datos extraídos y guardados en contenido_archivos.xlsx, reseña_archivos.docx")
 
 # Initialize the TkinterDnD window
 root = TkinterDnD.Tk()
@@ -97,21 +128,21 @@ frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
 ventana_pegado = tk.Label(
     frame,
     text="Copia y pega archivos aquí",
-    bg="#2ba8be",
-    font=("Helvetica", 14),
+    bg="#2b74be",
+    font=("Helvetica", 20),
     relief="ridge",
     height=4
 )
 ventana_pegado.pack(fill=tk.BOTH, expand=True)
 
 # Add the "Aceptar" button
-boton_aceptar = tk.Button(frame, text="Aceptar", command=aceptar)
+boton_aceptar = tk.Button(frame, text="Aceptar archivos", command=aceptar)
 boton_aceptar.pack(side=tk.LEFT)
 
 boton_cerrar = tk.Button(frame, text="Cerrar", command=exit)
 boton_cerrar.pack(side=tk.RIGHT)
 
-boton_ejecutar = tk.Button(frame, text="Ejecutar", command=extraer_a_excel)
+boton_ejecutar = tk.Button(frame, text="Ejecutar", command=extraer_convertir)
 boton_ejecutar.pack(side=tk.BOTTOM)
 
 # Register the label as a drop target
