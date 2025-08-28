@@ -61,24 +61,26 @@ def extraer_convertir():
         texto = bloques[i+1].strip() if i+1 < len(bloques) else ""
 
         fecha = re.search(r'Fecha:\s*(.*?2025)', texto, re.IGNORECASE)
-        hora = re.search(r'(Hora|Horario)[:\- ]+([^\n]+)', texto)
-        causa = re.search(r'Causa:\s*([^\n]+)', texto, re.IGNORECASE)
-        jefe = re.search(r'Jefe de Servicio:\s*([^\n]+)', texto, re.IGNORECASE)
+        hora = re.search(r'(Hora\s*|Horario\s*)[:\- ]+([^\n]+)', texto)
+        causa = re.search(
+            r'(?:Causa\s*:\s*|hecho\s*:\s*)([^\n]+)', texto, re.IGNORECASE)
+        jefe = re.search(
+            r'Jefe\s*+de\s*+Servicio:\s*([^\n]+)', texto, re.IGNORECASE)
         oficial = re.search(
-            r'Oficial de Serv[ií]cio:\s*([^\n]+)', texto, re.IGNORECASE)
+            r'Oficial\s*+de\s*+Serv[ií]cio:\s*([^\n]+)', texto, re.IGNORECASE)
         operador = re.search(
-            r'Operador de C[aá]mara:\s*([^\n]+)', texto, re.IGNORECASE)
-        resena_bloque = re.search(
-            r'(breve\s+rese[ñn]a\s*:|breve\s+resena\s*:|Breve\s+rese[ñn]a\s*:|Breve\s+resena\s*:)(.*?)(?:\n\s*Resultado\s*:)',
-            texto, re.IGNORECASE | re.DOTALL
-        )
-        resultado = re.search(r'Resultado:\s*([^\n]+)', texto, re.IGNORECASE)
+            r'Operador\s*+de\s*+C[aá]mara:\s*([^\n]+)', texto, re.IGNORECASE)
+        sae = re.search(
+            r'(?:SAE\s*nº\s*|\sae\s*|sae\s*:\s*|sae\s*nº.|sae\s*nº\s*+:|sae\s*nro:\s*|sae\s*+nro.|carta\s*:|carta\s*+:|SAE\s*N.\s*ª\s*|SAE\s*nª\s*|SAE\s*N.\s*º\s*|N°\s*)\s*(\d{8})', texto, re.IGNORECASE)
+        resultado = re.search(
+            r'\s*Resultado\s*+:\s*([^\n]+)', texto, re.IGNORECASE)
 
         datos.append({
             "titulo": ruta,
             "fecha": fecha.group(1).strip() if fecha else "S/D",
             "hora": hora.group(2).strip() if hora else "S/D",
             "causa": causa.group(1).strip() if causa else "S/D",
+            "sae": sae.group(1).strip() if sae else "S/D",
             "jefe de servicio": jefe.group(1).strip() if jefe else "S/D",
             "oficial de servicio": oficial.group(1).strip() if oficial else "S/D",
             "operador de camara": operador.group(1).strip() if operador else "S/D",
@@ -86,18 +88,19 @@ def extraer_convertir():
         })
 
         # Extraer el bloque de reseña hasta "resultado" y quitar saltos de línea
+        # Corregir la segunda expresión regular
         resena_bloque = re.search(
-            r'(breve\s+rese[ñn]a\s*:|breve\s+resena\s*:|Breve\s+rese[ñn]a\s*:|Breve\s+resena\s*:)(.*?)(?:\n\s*Resultado\s*:)',
+            r'(?:rese[nñ]a|rese[ñn]a)\s*:?\s*(.*?)Resultado\s*:',
             texto, re.IGNORECASE | re.DOTALL
         )
         if resena_bloque:
-            reseña_limpia = re.sub(r'\s+', ' ', resena_bloque.group(2)).strip()
+            resena_limpia = re.sub(r'\s+', ' ', resena_bloque.group(1)).strip()
         else:
-            reseña_limpia = "S/D"
+            resena_limpia = "S/D"
 
         celda_combinada = (
             f"Fecha: {fecha.group(1).strip() if fecha else 'S/D'}\n"
-            f"Reseña: {reseña_limpia}\n"
+            f"Reseña: {resena_limpia}\n"
             f"Resultado: {resultado.group(1).strip() if resultado else 'S/D'}"
         )
 
@@ -111,13 +114,15 @@ def extraer_convertir():
     doc.add_heading('Reseñas extraídas', 0)
     for item in datos_2:
         doc.add_paragraph(item)
-        doc.add_paragraph('---')
+        doc.add_paragraph(
+            '--------------------------------------------------------------')
     doc.save("reseña_archivos.docx")
     print("Datos extraídos y guardados en contenido_archivos.xlsx, reseña_archivos.docx")
 
+
 # Initialize the TkinterDnD window
 root = TkinterDnD.Tk()
-root.title("Ventana para el archivo")
+root.title("Extraccion de datos .PDF a: -Parte semanal-Detenidos Oficiales-")
 root.geometry("600x200")
 
 # Create a frame to hold our content
@@ -129,7 +134,7 @@ ventana_pegado = tk.Label(
     frame,
     text="Copia y pega archivos aquí",
     bg="#2b74be",
-    font=("Helvetica", 20),
+    font=("Helvetica", 14),
     relief="ridge",
     height=4
 )
