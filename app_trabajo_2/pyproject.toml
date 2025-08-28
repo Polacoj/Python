@@ -1,0 +1,7 @@
+[project]
+name = "app-trabajo-2"
+version = "0.1.0"
+description = "script parte semanal Ley 23737"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
