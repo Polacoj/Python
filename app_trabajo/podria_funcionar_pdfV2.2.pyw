@@ -53,7 +53,7 @@ def extraer_convertir():
         operador = re.search(
             r'Operador\s*+de\s*+C[aá]mara:\s*([^\n]+)', texto, re.IGNORECASE)
         sae = re.search(
-            r'(?:SAE\s*nº\s*|\sae\s*|sae\s*:\s*|sae\s*nº.|sae\s*nº\s*+:|sae\s*nro:\s*|sae\s*+nro.|carta\s*:|carta\s*+:|SAE\s*N.\s*ª\s*|SAE\s*nª\s*|SAE\s*N.\s*º\s*|N°\s*)\s*(\d{8})', texto, re.IGNORECASE)
+            r'(?:SAE\s*Nro.\s*|SAE\s*nº\s*|\sae\s*|sae\s*:\s*|sae\s*nº.|sae\s*nº\s*+:|sae\s*nro:\s*|sae\s*+nro.|carta\s*:|carta\s*+:|SAE\s*N.\s*ª\s*|SAE\s*nª\s*|SAE\s*N.\s*º\s*|N°\s*)\s*(\d{8})', texto, re.IGNORECASE)
         resultado = re.search(
             r'\s*Resultado\s*+:\s*([^\n]+)', texto, re.IGNORECASE)
 
