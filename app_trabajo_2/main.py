@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 import pandas as pd
 
+
 def seleccionar_archivo():
     root = tk.Tk()
     root.withdraw()  # Oculta la ventana principal
@@ -10,6 +11,7 @@ def seleccionar_archivo():
         filetypes=[("Archivos Excel", "*.xlsx *.xls")]
     )
     return archivo
+
 
 def main():
     archivo_excel = seleccionar_archivo()
@@ -20,6 +22,7 @@ def main():
         # Aquí puedes buscar los parámetros que necesitas en el DataFrame
     else:
         print("No se seleccionó ningún archivo.")
+
 
 if __name__ == "__main__":
     main()

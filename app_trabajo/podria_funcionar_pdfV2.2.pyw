@@ -4,26 +4,29 @@ from pypdf import PdfReader
 import re
 import pandas as pd
 from docx import Document
+import openpyxl
+from openpyxl.styles import Font
 
-# Variables globales para almacenar rutas y contenido
+# Variable global para almacenar rutas
 rutas_global = []
-contenido_global = ""
 
 
 def pegar(evento):
-    global rutas_global, contenido_global
+    global rutas_global
     archivo = evento.data
-    # Extrae rutas entre llaves o rutas simples
     rutas = re.findall(r'\{([^}]+)\}|([^\s]+)', archivo)
-    # Normaliza la lista de rutas
     rutas = [ruta[0] if ruta[0] else ruta[1] for ruta in rutas]
-    rutas_global = rutas  # Guarda las rutas para usarlas al aceptar
+    rutas_global = rutas
     archivos_texto = "Pegado:\n" + "\n".join(rutas)
     ventana_pegado.config(text=archivos_texto)
     print(f"Archivos pegados: {rutas}")
 
+
+def extraer_convertir():
+    datos, datos_2 = [], []
     contenido = ""
-    for ruta in rutas:
+
+    for ruta in rutas_global:
         try:
             documento = PdfReader(ruta)
             contenido += "----------" + ruta + "----------------\n"
@@ -33,27 +36,6 @@ def pegar(evento):
                     contenido += texto_pagina + "\n"
         except Exception as e:
             contenido += f"Error al leer {ruta}: {str(e)}\n"
-    contenido_global = contenido  # Guarda el contenido para usarlo al aceptar
-    print(contenido)
-
-
-def aceptar():
-    global rutas_global, contenido_global
-    # Cambia el texto del label para indicar aceptación
-    ventana_pegado.config(text="Archivos cargados")
-    print("Archivos cargados")
-    # Guarda el contenido en un archivo .txt
-    if contenido_global:
-        with open("contenido_archivos.txt", "a", encoding="utf-8") as f:
-            f.write(contenido_global)
-            f.write("\n\n")
-        print("Contenido guardado en contenido_archivos.txt")
-
-
-def extraer_convertir():
-    datos, datos_2 = [], []
-    with open("contenido_archivos.txt", "r", encoding="utf-8") as f:
-        contenido = f.read()
 
     bloques = re.split(r'-{10,}(.+?)-{10,}\n', contenido)
     for i in range(1, len(bloques), 2):
@@ -87,8 +69,6 @@ def extraer_convertir():
             "resultado": resultado.group(1).strip() if resultado else "S/D"
         })
 
-        # Extraer el bloque de reseña hasta "resultado" y quitar saltos de línea
-        # Corregir la segunda expresión regular
         resena_bloque = re.search(
             r'(?:rese[nñ]a|rese[ñn]a)\s*:?\s*(.*?)Resultado\s*:',
             texto, re.IGNORECASE | re.DOTALL
@@ -106,12 +86,35 @@ def extraer_convertir():
 
         datos_2.append(celda_combinada)
 
-    df = pd.DataFrame(datos)
-    df.to_excel("contenido_archivos.xlsx", index=False)
+    # --- Acumulación en Excel ---
+    try:
+        df_existente = pd.read_excel("contenido_archivos.xlsx")
+        df_nuevo = pd.DataFrame(datos)
+        df_final = pd.concat([df_existente, df_nuevo], ignore_index=True)
+    except FileNotFoundError:
+        df_final = pd.DataFrame(datos)
+    df_final.to_excel("contenido_archivos.xlsx", index=False)
 
-    # Guardar datos_2 en un archivo Word
-    doc = Document()
-    doc.add_heading('Reseñas extraídas', 0)
+    # Agregar hipervínculos en la columna "titulo"
+    wb = openpyxl.load_workbook("contenido_archivos.xlsx")
+    ws = wb.active
+    col_titulo = 1  # La columna "titulo" es la primera
+
+    for row in range(2, ws.max_row + 1):
+        ruta_pdf = ws.cell(row=row, column=col_titulo).value
+        if ruta_pdf and ruta_pdf.lower().endswith(".pdf"):
+            ws.cell(row=row, column=col_titulo).hyperlink = ruta_pdf
+            ws.cell(row=row, column=col_titulo).font = Font(
+                color="0000FF", underline="single")
+
+    wb.save("contenido_archivos.xlsx")
+
+    # --- Acumulación en Word ---
+    try:
+        doc = Document("reseña_archivos.docx")
+    except Exception:
+        doc = Document()
+        doc.add_heading('Reseñas extraídas', 0)
     for item in datos_2:
         doc.add_paragraph(item)
         doc.add_paragraph(
@@ -119,20 +122,20 @@ def extraer_convertir():
     doc.save("reseña_archivos.docx")
     print("Datos extraídos y guardados en contenido_archivos.xlsx, reseña_archivos.docx")
 
+    # Borra el contenido del widget después de ejecutar
+    ventana_pegado.config(text="Arrastra o pega archivos PDF aquí")
 
-# Initialize the TkinterDnD window
+
 root = TkinterDnD.Tk()
 root.title("Extraccion de datos .PDF a: -Parte semanal-Detenidos Oficiales-")
 root.geometry("600x200")
 
-# Create a frame to hold our content
 frame = tk.Frame(root)
 frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
 
-# Create a label that can receive dropped files
 ventana_pegado = tk.Label(
     frame,
-    text="Copia y pega archivos aquí",
+    text="Arrastra o pega archivos PDF aquí",
     bg="#2b74be",
     font=("Helvetica", 14),
     relief="ridge",
@@ -140,20 +143,14 @@ ventana_pegado = tk.Label(
 )
 ventana_pegado.pack(fill=tk.BOTH, expand=True)
 
-# Add the "Aceptar" button
-boton_aceptar = tk.Button(frame, text="Aceptar archivos", command=aceptar)
-boton_aceptar.pack(side=tk.LEFT)
-
 boton_cerrar = tk.Button(frame, text="Cerrar", command=exit)
 boton_cerrar.pack(side=tk.RIGHT)
 
 boton_ejecutar = tk.Button(frame, text="Ejecutar", command=extraer_convertir)
-boton_ejecutar.pack(side=tk.BOTTOM)
+boton_ejecutar.pack(side=tk.LEFT)
 
-# Register the label as a drop target
 ventana_pegado.drop_target_register(DND_FILES)
 ventana_pegado.dnd_bind('<<Drop>>', pegar)
 
-# Run the application
 if __name__ == "__main__":
     root.mainloop()
