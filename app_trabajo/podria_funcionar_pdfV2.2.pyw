@@ -128,25 +128,29 @@ def extraer_convertir():
 
 root = TkinterDnD.Tk()
 root.title("Extraccion de datos .PDF a: -Parte semanal-Detenidos Oficiales-")
-root.geometry("600x200")
+root.config(bg="#822121")
+root.geometry("840x400")
 
 frame = tk.Frame(root)
-frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
+frame.pack(fill=tk.BOTH, expand=True, padx=4, pady=4)
 
 ventana_pegado = tk.Label(
     frame,
     text="Arrastra o pega archivos PDF aquí",
     bg="#2b74be",
     font=("Helvetica", 14),
-    relief="ridge",
-    height=4
+    relief="sunken",
+    fg="white",
+    height=6
 )
 ventana_pegado.pack(fill=tk.BOTH, expand=True)
 
-boton_cerrar = tk.Button(frame, text="Cerrar", command=exit)
+boton_cerrar = tk.Button(frame, text="Cerrar", width=20, height=2, command=exit)
+boton_cerrar.config(background="#FF3333", fg="darkblue", activeforeground="red")
 boton_cerrar.pack(side=tk.RIGHT)
 
-boton_ejecutar = tk.Button(frame, text="Ejecutar", command=extraer_convertir)
+boton_ejecutar = tk.Button(frame, text="Ejecutar", width=20, height=2, command=extraer_convertir)
+boton_ejecutar.config(background="#33FF41", fg="darkblue", activeforeground="green")
 boton_ejecutar.pack(side=tk.LEFT)
 
 ventana_pegado.drop_target_register(DND_FILES)
