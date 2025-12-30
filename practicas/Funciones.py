@@ -1,47 +1,45 @@
-'''
 # ----------SIN retorno de valor-(MUESTRAN mensaje)--------
-def Saludar():
+def saludar():
+    """Funcion que saluda al usuario"""
     print("hola MUNDO")
     print("vamos todos".encode())
 
+saludar()
+print(saludar.__doc__)#-----------de esta manera mostramos la documentacion de la funcion
 
-Saludar()
 
-
-def NuevoSaludo(nombre):
+def nuevo_saludo(nombre):
     print(f"Como va {nombre}\n")
     if nombre == "no tengo":
         print("Que tal desconocido\n")
 
-
 dato = input("nombre :? ")
-NuevoSaludo(dato)
+nuevo_saludo(dato)
 
 
-def Multi(num):
+def multi(num):
     for i in range(1, 11):
         print(f" {num} X {i} = {num*i}")
 
 
 numero = int(input("Numero a multiplicar: "))
-Multi(numero)
+multi(numero)
 
 # ------------CON retorno de valor-----------
-
-def Otro_multi(num_uno, num_dos):
+def otro_multi(num_uno, num_dos):
     res = num_uno * num_dos
     return res
 
-print(Otro_multi(4, 7)) # ----------OPCION 1 para ver el resultado de la funcion
+print(otro_multi(4, 7)) # ----------OPCION 1 para ver el resultado de la funcion
 
-valor = Otro_multi(7, 9)    # ------- OPCION 2 pra mostrar el resultado
+valor = otro_multi(7, 9)    # ------- OPCION 2 pra mostrar el resultado
 print(valor)
 
 
-def Valores_Multi():
+def valores_multi():
     return "cadena de texto", 34, ['l', 'i', 's', 't', 'a']
 
-c, n, l = Valores_Multi()  # ----tomamos una variable para cada una las operaciones de la funcion (cadena-numero-lista)
+c, n, l = valores_multi()  # ----tomamos una variable para cada una las operaciones de la funcion (cadena-numero-lista)
 
 print(c)
 print(n)
@@ -49,7 +47,6 @@ print(l)
 
 
 # ------ARGUMENTO por valor------
-
 def doblar_numero(numero):
     numero *= 2
     print(numero)
@@ -59,7 +56,6 @@ doblar_numero(n) # se le pasa una copia del valor de N, por lo que el VALOR orig
 print(n)
 
 # -------ARGUMENTO por referencia--Se usa para listas----tuplas----diccionarios-----
-
 def doblar_numeros(numeros):
     #for i in range(len(lista)):         ---------Son el mismo proceso que enumerate------
     for i, lista in enumerate(numeros):
@@ -104,18 +100,27 @@ def main():
 if __name__ == '__name__':
     main()
 
-main()'''
+main()
 
-"""# --------------funcion para PARAMETROS dobles tipo DICCIONARIO---------
+
+# -------------Funciones con parametros por defecto--------
+def nombre(nom='alexis'):
+    return f"hola {nom} como estas??"
+
+
+print(nombre())
+print(nombre("jose"))
+
+
+# --------------funcion para PARAMETROS dobles tipo DICCIONARIO---------
 def agenda(**datos):
     datos = {}
-    x = input("Ingrese cantidad de datos: ")
+    x = int(input("Ingrese cantidad de datos: "))
     for key in range(x):
         for value in x: #datos.items():
             datos = input("Clave= {}, valor{}".format(key, value))
             #datos[value] = input("valor= ")
 #    print(datos())
-
 
 agenda()
 
@@ -133,14 +138,4 @@ for origen in nodos:
     if distancia != 0:
        vertices[origen][destino] = distancia
 
-print(vertices.items())"""
-
-# -------------Funciones con parametros por defecto--------
-
-
-def nombre(nom='alexis'):
-    return f"hola {nom} como estas??"
-
-
-print(nombre())
-print(nombre("jose"))
+print(vertices.items())

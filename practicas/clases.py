@@ -46,7 +46,7 @@ class Autos:
     def info_auto(self):                        # ---------------------> METODO de la CLASE
         info = f"********\nDescripcion del vehiculo {self.marca}\nde color {self.color}\ncon un precio de {self.precio}\n"
         if self.promo:
-            info += f"TIENE DESCUENTO quedando en --> {self.desc}"
+            info += f"TIENE DESCUENTO de quedando en --> {self.desc}"
         return info
 
 audi = Autos("audi", "blanco", 1320)

@@ -1,5 +1,5 @@
 class Persona:
-    def __init__(self, nombre, apellido, alias = "Sin alias"):
+    def __init__(self, nombre, apellido, alias = "Sin alias"):#funcion que se ejecuta al crear el objeto nuevamente
         self.nombre = nombre
         self.apellido = apellido
         self.alias = alias

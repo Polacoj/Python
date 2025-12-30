@@ -24,12 +24,16 @@ print(variable.nombre_completo)
 
 #-----clase con constructor y funcion--------
 class Ave:
-    def __init__(self, tipo):
-        self.especie = tipo
+    atributo = "tiene alas"#atributo de clase, no de instancia
+    
+    def __init__(self, tipo):#constructor
+        self.especie = tipo#atributo de instancia
 
-    def vuela(self):
-        print(f"{self.especie}, de ave volado ra")
+    def vuela(self):#metodo
+        print(f"{self.especie}, de ave voladora")#metodo
 
 variable = Ave("gaviota")        
 print(variable.especie)
 variable.vuela()
+
+print(Ave.atributo)

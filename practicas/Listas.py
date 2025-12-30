@@ -41,8 +41,7 @@ print(var_uno)
 print(var_dos)
 
 # ----------MINIMOS y MAXIMOS importando funcion HEAPQ (en la cual podemos elegir la cantidad-------------
-listado = [110, 34, 3, 67, 98, 5, 23, 756, 23,
-           10, 1, 4, 76, 34, 23, 98, 34, 12, 19, 122]
+listado = [110, 34, 3, 67, 98, 5, 23, 756, 23, 10, 1, 4, 76, 34, 23, 98, 34, 12, 19, 122]
 
 
 print('minimo', min(listado))
@@ -50,3 +49,12 @@ print('maximo', max(listado))
 
 print('cantidad de maximos: ', heapq.nlargest(5, listado))
 print('cantidad de 3 minimos: ', heapq.nsmallest(3, listado))
+
+#las listas se ordenan alfabeticamente y si hay mayusculas van antes que minusculas
+letras = ['b', 'a', 'd', 'z', 'e', 'c', 'A', 'Z', 'c' ]
+letras.sort()
+print(letras)
+
+#para ordenar sin importar mayusculas o minusculas
+letras.sort(key=str.lower)
+print(letras) 
