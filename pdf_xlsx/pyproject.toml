@@ -8,17 +8,20 @@ dependencies = [
     "document==1.0",
     "docx==0.2.4",
     "et-xmlfile==2.0.0",
+    "flet>=0.84.0",
     "lxml==6.0.1",
     "numpy==2.3.2",
     "openpyxl==3.1.5",
     "pandas==2.3.2",
     "pillow==11.3.0",
     "pypdf==6.0.0",
+    "pyqt5>=5.15.11",
     "python-dateutil==2.9.0.post0",
     "python-docx==1.2.0",
     "pytz==2025.2",
     "six==1.17.0",
     "tkinterdnd2==0.4.3",
+    "ttkbootstrap>=1.20.2",
     "typing-extensions==4.15.0",
     "tzdata==2025.2",
 ]
@@ -27,4 +30,5 @@ dependencies = [
 members = [
     "versiones de prueba",
     "pruebas_tablas",
+    "mejora_visual",
 ]

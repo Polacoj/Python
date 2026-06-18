@@ -1,0 +1,12 @@
+[project]
+name = "parte-semanal"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "python-docx>=0.8.11",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.0",
+    "pypdf>=6.6.2",
+]

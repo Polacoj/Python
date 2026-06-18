@@ -1,0 +1,23 @@
+2026-01-01 19:12:47,796 - INFO - Eventos principales guardados: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/eventos_backup.xlsx
+2026-01-01 19:12:47,932 - INFO - Procesado contraventores: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/contraventores_detenidos_backup.xlsx
+2026-01-01 19:12:47,996 - INFO - Procesado integrados: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/integrados_backup.xlsx
+2026-01-01 19:12:48,282 - INFO - Procesado colaboradores: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/colaboradores_backup.xlsx
+2026-01-01 19:12:48,767 - INFO - Archivo unificado creado: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/eventos_unificado.xlsx
+2026-01-01 19:12:48,768 - INFO - Procesamiento de eventos completado exitosamente
+2026-01-01 19:13:11,758 - WARNING - CMU tiene SAEs duplicados, manteniendo el primero
+2026-01-01 19:13:11,785 - INFO - Narración procesada exitosamente: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/narracion_origen.xlsx
+2026-01-01 19:14:34,510 - INFO - Eventos principales guardados: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/eventos_backup.xlsx
+2026-01-01 19:14:34,644 - INFO - Procesado contraventores: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/contraventores_detenidos_backup.xlsx
+2026-01-01 19:14:34,708 - INFO - Procesado integrados: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/integrados_backup.xlsx
+2026-01-01 19:14:35,003 - INFO - Procesado colaboradores: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/colaboradores_backup.xlsx
+2026-01-01 19:14:35,499 - INFO - Archivo unificado creado: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/eventos_unificado.xlsx
+2026-01-01 19:14:35,499 - INFO - Procesamiento de eventos completado exitosamente
+2026-01-01 19:15:11,124 - WARNING - CMU tiene SAEs duplicados, manteniendo el primero
+2026-01-01 19:15:11,150 - INFO - Narración procesada exitosamente: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/narracion_origen.xlsx
+2026-01-04 12:31:22,011 - INFO - Eventos principales guardados: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/eventos_backup.xlsx
+2026-01-04 12:31:22,147 - INFO - Procesado contraventores: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/contraventores_detenidos_backup.xlsx
+2026-01-04 12:31:22,209 - INFO - Procesado integrados: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/integrados_backup.xlsx
+2026-01-04 12:31:22,510 - INFO - Procesado colaboradores: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/colaboradores_backup.xlsx
+2026-01-04 12:31:23,012 - INFO - Archivo unificado creado: /Users/alexisjankowicz/Python/productividad/archivos_xlsx/eventos_unificado.xlsx
+2026-01-04 12:31:23,012 - INFO - Procesamiento de eventos completado exitosamente
+2026-01-04 12:31:59,388 - WARNING - CMU tiene SAEs duplicados, manteniendo el primero
