@@ -366,6 +366,7 @@ class MainWindow(QMainWindow):
             )
 
         for idx, valor_celda in df_trabajo_mod["OFICIAL"].items():
+            assert isinstance(idx, int)  # asegurar que el índice es entero
             idx = int(idx)  # asegurar que el índice es entero
             nombre_norm = normalizar_nombre(valor_celda)
             if nombre_norm == "":
@@ -469,10 +470,13 @@ class MainWindow(QMainWindow):
             )
 
         # ── Paso 1: Leer hoja VALIDACION del diccionario ─────────
-        self.append_log(
-            f"\nLeyendo hoja 'VALIDACION' de: {self._ruta_diccionario.name}..."
-        )
-        todas_hojas = leer_archivo_excel(self._ruta_diccionario)
+        if self._ruta_diccionario is not None:
+            self.append_log(
+                f"\nLeyendo hoja 'VALIDACION' de: {self._ruta_diccionario.name}..."
+            )
+            todas_hojas = leer_archivo_excel(self._ruta_diccionario)
+        else:
+            raise RuntimeError("No se especificó el Diccionario Maestro.")
 
         # Buscar la hoja ignorando mayúsculas/minúsculas
         hoja_val = next(
@@ -585,6 +589,7 @@ class MainWindow(QMainWindow):
                     df.at[idx, col] = nombre_revertido
                     reemplazados += 1
                 else:
+                    assert isinstance(idx, int)  # asegurar que el índice es entero
                     # El valor no es un ID conocido (o ya era un nombre)
                     sin_match += 1
                     ids_sin_match.append(f"{col}:fila {idx + 1} → '{valor_str}'")
