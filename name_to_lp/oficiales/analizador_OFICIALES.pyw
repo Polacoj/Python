@@ -106,10 +106,10 @@ class SheetSelectionDialog(QDialog):
         super().accept()
 
 
-
 def guardar_diccionario_con_bak(df_actualizado, ruta_original):
     import shutil
     from openpyxl import load_workbook
+
     ruta_bak = ruta_original.parent / "ANTIGUO_DICCIONARIO.xlsx"
     shutil.copy2(ruta_original, ruta_bak)
     wb = load_workbook(ruta_original)
@@ -126,8 +126,8 @@ def guardar_diccionario_con_bak(df_actualizado, ruta_original):
     for fila_idx, fila in enumerate(df_actualizado.itertuples(index=False), start=2):
         for col_idx, valor in enumerate(fila, start=1):
             import pandas as pd
-            ws.cell(row=fila_idx, column=col_idx,
-                    value="" if pd.isna(valor) else valor)
+
+            ws.cell(row=fila_idx, column=col_idx, value="" if pd.isna(valor) else valor)
     wb.save(ruta_original)
 
 
@@ -405,7 +405,9 @@ class MainWindow(QMainWindow):
             )
             guardar_diccionario_con_bak(df_diccionario_act, ruta_diccionario)
             self.append_log("  ✔ Backup guardado: ANTIGUO_DICCIONARIO.xlsx")
-            self.append_log(f"  ✔ Diccionario original actualizado: {ruta_diccionario.name}")
+            self.append_log(
+                f"  ✔ Diccionario original actualizado: {ruta_diccionario.name}"
+            )
             raise RuntimeError(
                 f"Coincidencia incompleta ({porcentaje:.1f}%). "
                 f"Se actualizó '{ruta_diccionario.name}' con los nombres faltantes. "
@@ -446,13 +448,13 @@ class MainWindow(QMainWindow):
         Diccionario Maestro.
 
         Flujo:
-          1. Leer la hoja 'VALIDACION' del Diccionario Maestro.
-          2. Construir mapa inverso { ID → APELLIDO Y NOMBRE }.
-          3. Para cada columna de personal en ambos archivos _PROCESADO:
-               - Buscar el ID en el mapa inverso.
-               - Reemplazar por el nombre si hay coincidencia.
-               - Acumular IDs sin coincidencia (no debería haber, pero se reportan).
-          4. Guardar como _REVERTIDO.xlsx (preserva los _PROCESADO intactos).
+            1. Leer la hoja 'VALIDACION' del Diccionario Maestro.
+            2. Construir mapa inverso { ID → APELLIDO Y NOMBRE }.
+            3. Para cada columna de personal en ambos archivos _PROCESADO:
+                - Buscar el ID en el mapa inverso.
+                - Reemplazar por el nombre si hay coincidencia.
+                - Acumular IDs sin coincidencia (no debería haber, pero se reportan).
+            4. Guardar como _REVERTIDO.xlsx (preserva los _PROCESADO intactos).
         """
         self.append_log("\n" + "═" * 50)
         self.append_log("  PROCESO INVERSO: IDs → NOMBRES (hoja VALIDACION)")
