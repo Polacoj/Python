@@ -61,7 +61,7 @@ class ColaboradoresProcessor:
                                 "HORA": "",
                                 "OPERADOR": valor,
                                 "TIPO DE EVENTO": "COLABORACION EN APOYO OPTICO",
-                                "BARRIO": "",
+                                "BARRIO": "ADICIONAL",
                                 "ORIGEN": fila.get(self.org_col),
                                 "GAP": fila.get(self.gap_col),
                                 "SAE": fila.get(self.sae_col),
