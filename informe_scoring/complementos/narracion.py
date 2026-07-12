@@ -338,7 +338,7 @@ class NarracionProcessor:
         resultado["HORA"] = ""
         resultado["TIPO DE EVENTO"] = "NARRACION COMPLETA DE EVENTO"
         resultado["BARRIO"] = "ADICIONAL"
-        resultado["GAP"] = resultado["GAP"].astype(str)
+        resultado["GAP"] = resultado["GAP"].astype("Int64")
 
         column_order = [
             "FECHA",
