@@ -30,7 +30,7 @@ from typing import Optional
 from complementos.contraventores_detenidos import ContraventoresProcessor
 from complementos.integrados import IntegradosProcessor
 from complementos.colaboradores import ColaboradoresProcessor
-from complementos.narracion import NarracionProcessor      # ← nuevo módulo
+from complementos.narracion import NarracionProcessor  # ← nuevo módulo
 import time
 
 SCRIPT_DIR = Path(__file__).parent
@@ -75,8 +75,6 @@ def norm(s):
 #     • procesar_narracion_file()          →  NarracionProcessor.procesar_narracion_file()
 #     • _extraer_mes_de_nombre()           →  NarracionProcessor.extraer_mes_de_nombre()
 # ─────────────────────────────────────────────────────────────────────────────
-
-
 
 
 # Procesar archivo de eventos (contraventores y detenidos)
@@ -138,8 +136,7 @@ def procesar_excel(ruta_archivo):
         log_mensaje("✓ Columnas GAP y SAE limpiadas y convertidas a numérico")
 
         # Columnas a extraer (base 1 → base 0)
-        columnas_a_extraer = [1, 2, 7, 16, 20, 32, 13, 14]
-        columnas_a_extraer = [i - 1 for i in columnas_a_extraer]
+        columnas_a_extraer = [1, 2, 7, 16, "", "", 20, 32, 13, 14]
 
         log_mensaje(
             "\n───────────────────────────────────────────────────────────────────────"
@@ -160,17 +157,30 @@ def procesar_excel(ruta_archivo):
         log_mensaje("    Col 13 → GAP")
         log_mensaje("    Col 14 → SAE")
 
-        if len(df.columns) < max(columnas_a_extraer) + 1:
-            return (
-                False,
-                (
-                    f"El archivo no tiene suficientes columnas.\n"
-                    f"Se esperaban al menos {max(columnas_a_extraer) + 1}"
-                ),
-                None,
-            )
+        columnas_seleccionadas = []
+        nombres_columnas = []
+        for valor in columnas_a_extraer:
+            if isinstance(valor, int):
+                pos = valor - 1
+                if pos < 0 or pos >= len(df.columns):
+                    return (
+                        False,
+                        (
+                            f"El archivo no tiene suficientes columnas.\n"
+                            f"Se esperaban al menos {pos + 1}"
+                        ),
+                        None,
+                    )
+                columnas_seleccionadas.append(df.iloc[:, pos].copy())
+                nombres_columnas.append(df.columns[pos])
+            else:
+                columnas_seleccionadas.append(
+                    pd.Series([""] * len(df), index=df.index, dtype=object)
+                )
+                nombres_columnas.append(f"VACIO_{len(nombres_columnas) + 1}")
 
-        df_eventos = df.iloc[:, columnas_a_extraer].copy()
+        df_eventos = pd.concat(columnas_seleccionadas, axis=1)
+        df_eventos.columns = nombres_columnas
 
         if "TIPIFICACION" in df_eventos.columns:
             df_eventos.rename(columns={"TIPIFICACION": "TIPO DE EVENTO"}, inplace=True)
@@ -388,7 +398,9 @@ def seleccionar_archivo():
                 mes = narr_proc.extraer_mes_de_nombre(Path(archivo).name)
 
                 # Llamar al método del objeto en lugar de la función suelta
-                ok_n, msg_n = narr_proc.procesar_narracion_file(ruta_narr, mes, ruta_unificado)
+                ok_n, msg_n = narr_proc.procesar_narracion_file(
+                    ruta_narr, mes, ruta_unificado
+                )
 
                 estado_var.set(
                     "✅ Narración procesada" if ok_n else "✗ Error en narración"

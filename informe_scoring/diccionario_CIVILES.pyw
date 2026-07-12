@@ -1,11 +1,14 @@
 """
 Analizador de Personal con interfaz PyQt6.
 
-Este script carga los tres archivos requeridos, valida las hojas y columnas,
-reconciliando los nombres de OPERADOR con el Diccionario Maestro.
+Este script carga los tres archivos requeridos:
+    * diccionario
+    * archivo diario/mensual/o libro
+    * archivo control diario
+    , valida las hojas y columnas, reconciliando los nombres de OPERADOR con el Diccionario Maestro.
 
 Flujo principal:
-  1. Selecciona Diccionario Maestro, Fiscalización Diaria/Mensual y Control Diario Mes.
+  1. Selecciona Diccionario Maestro, Fiscalización Diaria/Mensual/libro excel y Control Diario Mes.
   2. Carga y selecciona hoja si hay múltiples hojas.
   3. Valida columnas requeridas.
   4. Reconciliación de Fiscalización Diaria/Mensual y Control Diario.
