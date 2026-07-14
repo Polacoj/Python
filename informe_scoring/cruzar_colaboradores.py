@@ -29,6 +29,7 @@ from PyQt6.QtWidgets import (
     QHeaderView,
     QGroupBox,
     QSizePolicy,
+    QInputDialog,
 )
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QSize
 from PyQt6.QtGui import QFont, QColor, QPalette, QIcon
@@ -165,6 +166,15 @@ ESTILO_GLOBAL = f"""
 """
 
 
+def seleccionar_hoja_excel(hojas_disponibles: list[str], indice: int) -> str:
+    """Devuelve la hoja seleccionada por número (1-based) desde la lista disponible."""
+    if not hojas_disponibles:
+        raise ValueError("No hay hojas disponibles para seleccionar.")
+    if indice < 1 or indice > len(hojas_disponibles):
+        raise IndexError("El número de hoja está fuera del rango disponible.")
+    return hojas_disponibles[indice - 1]
+
+
 # ══════════════════════════════════════════════════════════════════
 #  HILO DE PROCESAMIENTO (evita que la GUI se congele)
 # ══════════════════════════════════════════════════════════════════
@@ -189,25 +199,37 @@ class HiloProcesamiento(QThread):
     COL_COLABORADOR_4 = "COLABORADORES 4"
     COL_COLABORADOR_5 = "COLABORADORES 5"
 
-    def __init__(self, ruta1, ruta2, ruta_salida):
+    def __init__(self, ruta1, ruta2, ruta_salida, hoja_archivo2):
         super().__init__()
         self.ruta1 = ruta1
         self.ruta2 = ruta2
         self.ruta_salida = ruta_salida
+        self.hoja_archivo2 = hoja_archivo2
 
     def run(self):
         try:
             # ── Paso 1: Leer archivos ──────────────────────────
             self.progreso.emit(10, "Leyendo Archivo 1...")
-            df1 = pd.read_excel(self.ruta1, header=0, dtype=str)
-            # Convertir TODOS los nombres de columna a str (Excel puede generar float
+            df1 = pd.read_excel(
+                self.ruta1,
+                header=0,
+                converters={
+                    self.COL_SAE_A1: lambda v: str(v).strip() if not pd.isna(v) else v,
+                },
+            )
+            # Convertir nombres de columna a str (Excel puede generar float
             # en columnas sin encabezado: 0.0, 1.0, etc.)
             df1.columns = [str(c).strip() for c in df1.columns]
 
-            self.progreso.emit(25, "Leyendo Archivo 2...")
+            self.progreso.emit(25, f"Leyendo Archivo 2 (hoja: {self.hoja_archivo2})...")
             df2 = pd.read_excel(
-                self.ruta2, header=1, dtype=str
-            )  # header=1 para que lea desde la fila 2 de Excel
+                self.ruta2,
+                sheet_name=self.hoja_archivo2,
+                header=0,
+                converters={
+                    self.COL_SAE_A2: lambda v: str(v).strip() if not pd.isna(v) else v,
+                },
+            )
             df2.columns = [str(c).strip() for c in df2.columns]
 
             # ── Paso 2: Validar columnas ───────────────────────
@@ -304,7 +326,13 @@ class HiloProcesamiento(QThread):
             # int() fuerza tipos nativos de Python (no numpy.int64)
             # para que pyqtSignal(dict) los serialice sin error.
             total = int(len(df1))
-            encontrados = int(df1["COLABORADOR 1"].notna().sum())
+            encontrados = int(
+                df1["COLABORADOR 1"].notna().sum()
+                + df1["COLABORADOR 2"].notna().sum()
+                + df1["COLABORADOR 3"].notna().sum()
+                + df1["COLABORADOR 4"].notna().sum()
+                + df1["COLABORADOR 5"].notna().sum()
+            )
             no_encontrados = int(total - encontrados)
 
             self.progreso.emit(100, "¡Proceso completado!")
@@ -381,7 +409,7 @@ class VentanaPrincipal(QMainWindow):
         titulo = QLabel("Cruzar Colaboradores")
         titulo.setObjectName("lbl_titulo")
         subtitulo = QLabel(
-            "Inserta COLABORADOR 1–5 entre columnas 7 y 8 del Archivo 1, "
+            "Inserta COLABORADOR 1 al 5 entre columnas 7 y 8 del Archivo 1, "
             "cruzando por SAE con el Archivo 2"
         )
         subtitulo.setObjectName("lbl_subtitulo")
@@ -481,6 +509,51 @@ class VentanaPrincipal(QMainWindow):
                 ruta += ".xlsx"
             self.sel_salida.set_ruta(ruta)
 
+    def _seleccionar_hoja_archivo2(self, ruta2: str):
+        try:
+            excel_file = pd.ExcelFile(ruta2, engine="openpyxl")
+            hojas = excel_file.sheet_names
+        except Exception as exc:
+            self._alerta(
+                "No se pudo leer Archivo 2",
+                f"No se pudo abrir el archivo Excel:\n{exc}",
+            )
+            return None
+
+        if not hojas:
+            self._alerta(
+                "Archivo sin hojas", "El Archivo 2 no contiene hojas para leer."
+            )
+            return None
+
+        if len(hojas) == 1:
+            return hojas[0]
+
+        lista = "\n".join(f"{i}. {nombre}" for i, nombre in enumerate(hojas, start=1))
+        texto = (
+            "Hojas disponibles en el Archivo 2:\n"
+            f"{lista}\n\n"
+            "Ingresá el número de la hoja a usar:"
+        )
+
+        numero, ok = QInputDialog.getInt(
+            self,
+            "Seleccionar hoja",
+            texto,
+            1,
+            1,
+            len(hojas),
+            1,
+        )
+        if not ok:
+            return None
+
+        try:
+            return seleccionar_hoja_excel(hojas, numero)
+        except (IndexError, ValueError) as exc:
+            self._alerta("Selección inválida", str(exc))
+            return None
+
     # ── Inicio del procesamiento ──────────────────────────────
     def _iniciar_procesamiento(self):
         r1 = self.sel_arch1.ruta()
@@ -500,13 +573,17 @@ class VentanaPrincipal(QMainWindow):
                 "Falta destino", "Indicá dónde guardar el archivo de salida."
             )
 
+        hoja_archivo2 = self._seleccionar_hoja_archivo2(r2)
+        if hoja_archivo2 is None:
+            return
+
         self.btn_procesar.setEnabled(False)
         self.barra.setValue(0)
         self.barra.setFormat("Iniciando…")
-        self.lbl_estado.setText("")
+        self.lbl_estado.setText(f"Usando hoja: {hoja_archivo2}")
         self.lbl_estado.setStyleSheet(f"color: {COLOR_TEXTO_SUAVE}; font-size: 12px;")
 
-        self.hilo = HiloProcesamiento(r1, r2, rs)
+        self.hilo = HiloProcesamiento(r1, r2, rs, hoja_archivo2)
         self.hilo.progreso.connect(self._en_progreso)
         self.hilo.terminado.connect(self._en_terminado)
         self.hilo.error.connect(self._en_error)
@@ -532,7 +609,7 @@ class VentanaPrincipal(QMainWindow):
         msg.setText(
             f"<b>¡Archivo generado correctamente!</b><br><br>"
             f"<table cellspacing='6'>"
-            f"<tr><td>Total de filas procesadas:</td><td><b>{stats['total']}</b></td></tr>"
+            f"<tr><td>Total de filas en procesadas:</td><td><b>{stats['total']}</b></td></tr>"
             f"<tr><td>SAEs con coincidencia:</td>"
             f"<td><b style='color:{COLOR_EXITO}'>{stats['encontrados']}</b></td></tr>"
             f"<tr><td>SAEs sin coincidencia:</td>"
