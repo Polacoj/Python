@@ -1,0 +1,46 @@
+name: Build PDF-XLSX (Windows)
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'pdf_xlsx/extractor_pdf.pyw'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: pdf_xlsx
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: pdf_xlsx/requirements.txt
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Compilar el .exe
+        run: >
+          pyinstaller --onefile --name pdf_xlsx_app
+          --collect-all pandas
+          --collect-all lxml
+          --collect-all docx
+          --collect-all openpyxl
+          --collect-all pypdf
+          main.py
+
+      - name: Subir el ejecutable
+        uses: actions/upload-artifact@v6
+        with:
+          name: pdf_xlsx-windows
+          path: pdf_xlsx/dist/pdf_xlsx_app.exe
+          retention-days: 30
