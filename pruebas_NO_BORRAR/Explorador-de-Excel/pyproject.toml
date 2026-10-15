@@ -1,0 +1,27 @@
+[project]
+name = "explorador-excel"
+version = "1.0.0"
+description = "Una app de escritorio para seleccionar archivos XLSX y consultar sus hojas y encabezados."
+requires-python = ">=3.12"
+authors = [
+    { name = "Alexis", email = "polacoj@hotmail.com" }
+]
+dependencies = [
+    "flet",
+    "openpyxl"
+]
+
+[dependency-groups]
+dev = [
+    "flet-cli",
+    "flet-desktop",
+    "flet-web"
+]
+
+[tool.flet.metadata]
+title = "Explorador de Excel"
+
+[tool.flet]
+org = "dev.flet"
+company = "Alexis"
+copyright = "Copyright (C) 2026 by Alexis"
