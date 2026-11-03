@@ -19,6 +19,7 @@ class IntegradosProcessor:
         js_col="JEFE DE SERVICIO",
         of_col="OFICIAL",
         org_col="ORIGEN",
+        grupo_col="GRUPO",
         gap_col="GAP",
         sae_col="SAE",
     ):
@@ -26,6 +27,7 @@ class IntegradosProcessor:
         self.js_col = js_col
         self.of_col = of_col
         self.org_col = org_col
+        self.grupo_col = grupo_col
         self.gap_col = gap_col
         self.sae_col = sae_col
 
@@ -52,6 +54,7 @@ class IntegradosProcessor:
                         "TIPO DE EVENTO": "EVENTO INTEG./DESTAC. (LO DETERMINA CALIDAD)",
                         "BARRIO": "ADICIONAL",
                         "ORIGEN": fila.get(self.org_col),
+                        "GRUPO": fila.get(self.grupo_col),
                         "GAP": fila.get(self.gap_col),
                         "SAE": fila.get(self.sae_col),
                     }

@@ -18,6 +18,7 @@ class ColaboracionPropiaProcessor:
         js_col="JEFE DE SERVICIO",
         of_col="OFICIAL",
         org_col="ORIGEN",
+        group_col="GRUPO",
         cierre_col="TIPO DE CIERRE",
         gap_col="GAP",
         sae_col="SAE",
@@ -25,6 +26,7 @@ class ColaboracionPropiaProcessor:
         self.js_col = js_col
         self.of_col = of_col
         self.org_col = org_col
+        self.group_col = group_col
         self.cierre_col = cierre_col
         self.gap_col = gap_col
         self.sae_col = sae_col
@@ -52,6 +54,7 @@ class ColaboracionPropiaProcessor:
                         "TIPO DE EVENTO": "COLABORACION CON IMPUTADO/S POSITIVA",
                         "BARRIO": "ADICIONAL",
                         "ORIGEN": fila.get(self.org_col),
+                        "GRUPO": fila.get(self.group_col),
                         "GAP": fila.get(self.gap_col),
                         "SAE": fila.get(self.sae_col),
                     }

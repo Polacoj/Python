@@ -29,7 +29,7 @@ class VistaDiccionario(VistaBase):
 
     titulo = "Diccionario"
     icono = ft.Image(
-        src="/Users/alexisjankowicz/Python/flet_scoring_poli/src/icons/diccionario_color.png",  # Ruta relativa dentro de la carpeta assets
+        src="Z:/ESTADISTICA Y CALIDAD/Area Estadisticas y Gestion de Servicio/NOSOTROS/JANKO/Python/flet_scoring_poli/src/icons/diccionario_color.png",  # Ruta relativa dentro de la carpeta assets
         width=32,
         height=32,
         fit=ft.BoxFit.CONTAIN,
@@ -189,7 +189,9 @@ class VistaDiccionario(VistaBase):
             self.ruta_procesada = salida
             self.ruta_diccionario = ruta_diccionario
             self.log("\n✔ Proceso inverso disponible: «Revertir IDs → Nombres».")
-            await mostrar_dialogo(self.page, "Finalizado", "Proceso completado correctamente.")
+            await mostrar_dialogo(
+                self.page, "Finalizado", "Proceso completado correctamente."
+            )
         except ProcesoIncompleto as exc:
             self.log(f"\n⚠ {exc}")
             await mostrar_dialogo(
@@ -210,7 +212,9 @@ class VistaDiccionario(VistaBase):
                     "Ejecutá primero «Validar y reconciliar»."
                 )
             if self.ruta_diccionario is None:
-                raise RuntimeError("No hay un Diccionario Maestro asociado a este ciclo.")
+                raise RuntimeError(
+                    "No hay un Diccionario Maestro asociado a este ciclo."
+                )
 
             ruta_procesada = self.ruta_procesada
             ruta_diccionario = self.ruta_diccionario

@@ -16,12 +16,12 @@ class VistaGeneral(VistaBase):
 
     titulo = "Productividad General"
     icono = ft.Image(
-        src="/Users/alexisjankowicz/Python/flet_scoring_poli/src/icons/productividad_color.png",  # Ruta relativa dentro de la carpeta assets
+        src="Z:/ESTADISTICA Y CALIDAD/Area Estadisticas y Gestion de Servicio/NOSOTROS/JANKO/Python/flet_scoring_poli/src/icons/productividad_color.png",  # Ruta relativa dentro de la carpeta assets
         width=32,
         height=32,
         fit=ft.BoxFit.CONTAIN,
-        )
-    
+    )
+
     etiqueta_registro = "Registro — Productividad General"
 
     def __init__(self, page: ft.Page) -> None:
@@ -49,7 +49,7 @@ class VistaGeneral(VistaBase):
             alignment=ft.Alignment.CENTER_LEFT,
             expand=1,
             content=ft.Column(
-                [   
+                [
                     ft.Text("Qué genera", size=13, weight=ft.FontWeight.BOLD),
                     ft.Text(
                         f"Un único archivo {general.ARCHIVO_SALIDA} (hoja "
@@ -57,7 +57,10 @@ class VistaGeneral(VistaBase):
                         "elegido, combinando:",
                         size=12,
                     ),
-                    ft.Text("  • eventos principales extraídos por posición de columna,", size=12),
+                    ft.Text(
+                        "  • eventos principales extraídos por posición de columna,",
+                        size=12,
+                    ),
                     ft.Text("  • colaboración con intervención propia,", size=12),
                     ft.Text("  • contraventores y detenidos,", size=12),
                     ft.Text("  • eventos integrados/destacados.", size=12),
@@ -103,7 +106,9 @@ class VistaGeneral(VistaBase):
         self.page.update()
         try:
             ruta = validar_ruta(self.archivo.valor, "archivo maestro (CMU)")
-            resultado = await self.registro.ejecutar(general.procesar, ruta, self.registro.log)
+            resultado = await self.registro.ejecutar(
+                general.procesar, ruta, self.registro.log
+            )
             self.log("")
             self.log(resultado.resumen())
             await mostrar_dialogo(self.page, "Proceso completado", resultado.resumen())

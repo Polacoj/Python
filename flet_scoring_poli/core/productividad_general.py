@@ -37,7 +37,7 @@ COLUMNAS_A_EXTRAER: list[int | str] = [
     "",
     "",
     "",
-    "",
+    5,
     "",
     "",
     29,
@@ -58,6 +58,7 @@ CORRESPONDENCIA: dict[int, str] = {
     16: "TIPIFICACION",
     20: "BARRIO",
     32: "ORIGEN",
+    5: "GRUPO",
     29: "CONTRAVENTORES",
     30: "DETENIDOS",
     13: "GAP",
@@ -291,7 +292,9 @@ def procesar(ruta_archivo: Path | str, log: LogFn) -> ResultadoGeneral:
     return ResultadoGeneral(
         ruta_salida=ruta_unificado,
         filas_eventos=len(df_eventos),
-        filas_colaboracion=len(df_colaboracion) if df_colaboracion is not None else None,
+        filas_colaboracion=len(df_colaboracion)
+        if df_colaboracion is not None
+        else None,
         filas_contraventores=len(df_contra_det) if df_contra_det is not None else None,
         filas_integrados=len(df_integrados) if df_integrados is not None else None,
         total=len(df_combined),

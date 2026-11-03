@@ -16,7 +16,7 @@ class VistaImputados(VistaBase):
 
     titulo = "Productividad Imputados"
     icono = ft.Image(
-        src="/Users/alexisjankowicz/Python/flet_scoring_poli/src/icons/arrestar.png",  # Ruta relativa dentro de la carpeta assets
+        src="Z:/ESTADISTICA Y CALIDAD/Area Estadisticas y Gestion de Servicio/NOSOTROS/JANKO/Python/flet_scoring_poli/src/icons/arrestar.png",  # Ruta relativa dentro de la carpeta assets
         width=32,
         height=32,
         fit=ft.BoxFit.CONTAIN,

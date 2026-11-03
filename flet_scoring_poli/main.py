@@ -45,9 +45,7 @@ async def main(page: ft.Page) -> None:
     page.add(
         ft.Column(
             [
-                ft.Text(
-                    TITULO, size=26, weight=ft.FontWeight.BOLD, color="#2c3e50"
-                ),  
+                ft.Text(TITULO, size=26, weight=ft.FontWeight.BOLD, color="#2c3e50"),
                 ft.Tabs(
                     length=len(vistas),
                     selected_index=0,

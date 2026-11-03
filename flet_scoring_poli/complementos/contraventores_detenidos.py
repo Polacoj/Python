@@ -20,6 +20,7 @@ class ContraventoresDetenidosProcessor:
         cierre_col="TIPO DE CIERRE",
         barrio_col="BARRIO",
         origen_col="ORIGEN",
+        grupo_col="GRUPO",
         gap_col="GAP",
         sae_col="SAE",
         jefe_col="JEFE DE SERVICIO",
@@ -30,6 +31,7 @@ class ContraventoresDetenidosProcessor:
         self.cierre_col = cierre_col
         self.barrio_col = barrio_col
         self.origen_col = origen_col
+        self.grupo_col = grupo_col
         self.gap_col = gap_col
         self.sae_col = sae_col
         self.jefe_col = jefe_col
@@ -43,6 +45,7 @@ class ContraventoresDetenidosProcessor:
             if (
                 fila.get(self.cont_col, 0) >= 1
                 and fila.get(self.cierre_col, "") == "FINALIZA CON IMPUTADO/S PROPIO/S"
+                or fila.get(self.cierre_col, "") == "FINALIZADA CON IMPUTADO/S PROPIO/S"
             ):
                 oficial_val = (
                     fila.iloc[self.oficial_index]
@@ -58,15 +61,16 @@ class ContraventoresDetenidosProcessor:
                         "TIPO DE EVENTO": "EVENTO CON CONTRAVENTOR",
                         "BARRIO": "ADICIONAL",
                         "ORIGEN": fila.get(self.origen_col),
+                        "GRUPO": fila.get(self.grupo_col),
                         "GAP": fila.get(self.gap_col),
                         "SAE": fila.get(self.sae_col),
                     }
                 )
 
         for idx, fila in df.iterrows():
-            if (
-                fila.get(self.det_col, 0) >= 1
-                and fila.get(self.cierre_col, "") == "FINALIZA CON IMPUTADO/S PROPIO/S"
+            if fila.get(self.det_col, 0) >= 1 and (
+                fila.get(self.cierre_col, "") == "FINALIZA CON IMPUTADO/S PROPIO/S"
+                or fila.get(self.cierre_col, "") == "FINALIZADA CON IMPUTADO/S PROPIO/S"
             ):
                 oficial_val = (
                     fila.iloc[self.oficial_index]
@@ -82,6 +86,7 @@ class ContraventoresDetenidosProcessor:
                         "TIPO DE EVENTO": "EVENTO CON DETENIDOS",
                         "BARRIO": "ADICIONAL",
                         "ORIGEN": fila.get(self.origen_col),
+                        "GRUPO": fila.get(self.grupo_col),
                         "GAP": fila.get(self.gap_col),
                         "SAE": fila.get(self.sae_col),
                     }
